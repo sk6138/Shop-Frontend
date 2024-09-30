@@ -1,0 +1,19 @@
+.Feature-card{
+    display: flex;
+    padding: 20px;
+   align-items: center;
+}
+.cardContainer{
+    margin-top: 2%;
+    text-align: center;
+    
+}
+.CardButton{
+    display: flex;
+    justify-content: end;
+}
+@media (max-width: 800px) {
+    .Feature-card {
+      flex-direction: column;
+    }
+  }

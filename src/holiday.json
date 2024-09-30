@@ -1,0 +1,13 @@
+ [
+    {
+    "name": "New Year's Day",
+    "description": "New Year’s Day is celebrated many countries such as in India on the January 1 in the Gregorian calendar.",
+    "country":  "India",
+    "iso": "2024-01-01",
+    "primary_type": "Restricted Holiday",
+    "canonical_url": "https://calendarific.com/holiday/india/new-year-day",
+    "urlid": "india/new-year-day",
+    "locations": "All",
+    "states": "All"
+    }
+]

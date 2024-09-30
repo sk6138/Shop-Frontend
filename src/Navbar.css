@@ -1,0 +1,248 @@
+/* Navbar.css */
+
+.navbar {
+   box-sizing: border-box; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    height: 40px;
+    width: 100%;
+    
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand-name {
+    font-size: 20px;
+    
+    margin-right: 25px;
+  }
+
+  
+
+  
+  
+  .nav-links a {
+    margin-right: 25px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+  
+  .Navbar-center{
+    margin-left: -85px;
+    text-align: center;
+    width: 700px;
+    
+  }
+  
+  
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+
+  }
+  
+  .navbar-welcome {
+    text-align: center;
+    font-weight: 400;
+    color: gray;
+    margin: 0.5% 0;
+    
+    
+  }
+  
+  .icons a {
+    margin-left: 25px;
+    color: black;
+    text-decoration: none;
+  }
+  
+ 
+  .bi{
+    font-size: 20px;
+    margin: 10px;
+  }
+  
+ 
+.bi-search {
+    
+    cursor: pointer;
+  }
+  
+  .big-search-container {
+    margin-top: 1%;
+    position: sticky;
+  top: 0;
+  z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    /* position: relative; */
+    
+    
+  }
+  /* .search-button{
+    
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 10px ;
+    border: 1px solid #ccc;
+  } */
+  
+  .big-search-bar {
+    width: 40%;
+    padding: 10px;
+    font-size: 12px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .close-search {
+    position: absolute;
+    right: 5%;
+    background: transparent;
+    border: none;
+    font-size: 3rem;
+    color: rgb(11, 11, 11);
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .close-search:hover {
+    color: rgba(255, 0, 0, 0.371);
+  }
+
+  
+.search-button {
+    width: 70px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size:   15px;
+    height: 35px;
+    color: rgb(7, 6, 6);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .search-button i {
+    /* font-size: 1.5rem; */
+    font-size: 10px;
+  }
+  
+  .search-button:hover {
+    transition: all 0.3s ease-in-out;
+    background-color: #080808;
+    color: #ccc;
+    height:35px;
+
+  }
+  .searching{
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  
+  @media (max-width: 1034px) {
+    .Navbar-center{
+      /* margin-left: -85px; */
+      margin-left: 45%;
+      text-align: center;
+      width: 500px;
+    }
+    .icons a {
+      margin-left: 5px;
+    }
+  }
+  @media (max-width: 1163px) {
+    .Navbar-center{
+      display: none;
+    }
+  }
+
+  @media (max-width: 780px) {
+    .Navbar-center{
+      /* margin-left: -85px; */
+      text-align: center;
+      width: 40%;
+    }
+    .icons a {
+      margin-left: 0px;
+    }
+  }
+  @media (max-width :456px) {
+    .nav-links  a{
+      margin-right: 5px;
+      text-decoration: none;
+      color: black;
+      font-size: 10px;
+    }
+    .icons a {
+      margin-left: 5px;
+      color: black;
+      text-decoration: none;
+    }
+    .bi{
+      font-size: 10px;
+      margin: 5px;
+    }
+    .brand-name {
+      font-size: 14px;
+      
+      margin-right: 10px;
+    }
+    
+  }
+  @media (max-width : 490px) {
+    .big-search-bar {
+      width: 40%;
+      padding: 10px;
+      font-size: 12px;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+    }
+    
+    .close-search {
+      position: absolute;
+      right: 10%;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: rgb(11, 11, 11);
+      cursor: pointer;
+      padding: 0;
+    }
+    .search-button {
+      width: 40px;
+      padding: 10px 20px;
+      margin-left: 10px;
+      font-size:   12px;
+      
+      color: rgb(7, 6, 6);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+    }
+  }

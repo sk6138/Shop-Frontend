@@ -1,0 +1,81 @@
+/* ProductCard.css */
+ 
+  
+  .card {
+    margin-top: 1%;
+    font-family: Arial, sans-serif;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+    width:95% ;
+    margin:0 2%;
+    
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-image-container {
+    position: relative;
+    width: 23vw;
+    height: 50vh;
+    
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .off-badge{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(50, 50, 87);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .sold-out-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .product-name {
+    height: 25px;
+    overflow: hidden;
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .product-prices {
+    font-size: 16px;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 10px;
+  }
+  
+  .discounted-price {
+    font-weight: bold;
+    color: #000;
+  }
+  

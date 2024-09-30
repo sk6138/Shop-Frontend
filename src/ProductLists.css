@@ -1,0 +1,76 @@
+/* Main card container */
+.cardContainer {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    margin: 0 auto;
+  }
+  
+  /* Title styling */
+  .cardContainer h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Featured card layout for the grid */
+  .Feature-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Spacing between cards */
+    justify-items: center;
+    align-items: stretch;
+  }
+  
+  /* Card div for each product */
+  .carddiv {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    max-width: 280px;
+    width: 100%;
+  }
+  
+  /* Hover effect for the product card */
+  .carddiv:hover {
+    transform: translateY(-5px); /* Slight upward movement */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+  }
+  
+  /* Example ProductCard Component styling */
+  .productCard img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .productCard .product-info {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .productCard .product-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .productCard .product-price {
+    font-size: 16px;
+    color: #e74c3c;
+    font-weight: bold;
+  }
+  
+  .productCard .product-description {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+  }
+  
