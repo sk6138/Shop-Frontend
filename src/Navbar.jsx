@@ -3,7 +3,6 @@ import { NavLink} from 'react-router-dom';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./Navbar.css"; // Assuming you have a CSS file for styling
-import LoginButton from './LoginButton';
 function Navbar() {
 
     const [isSearchActive, setSearchActive] = useState(false);
