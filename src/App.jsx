@@ -7,7 +7,6 @@ import Contact from './Contact';
 import Cart from './Cart';
 import Profile from './Profile';
 import Search from './Search';
-import SpringBootFront from './SpringBootFront';
 import LatestProduct from './LatestProduct';
 import ProductLists from './ProductLists';
 import Cancel from './Cancel';
@@ -31,7 +30,7 @@ export default function App() {
   <Route path='/contact' element={<Contact/>}/>
   <Route path='/cart' element={<Cart/>}/>
   <Route path='/profile' element={<Profile/>}/>
-  <Route path='/spring' element={<SpringBootFront/>}/>
+  
  </Routes>
  </BrowserRouter>
    </>
