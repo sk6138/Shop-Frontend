@@ -11,7 +11,7 @@ import NotebookCardContainer from './NotebookCardContainer'
 
 
 export default function Home() {
-  const items = ['Apple', 'Banana', 'Cherry', 'Date'];
+ 
   return (
     <div>
        <Navbar id="nav"/>
