@@ -9,9 +9,16 @@ import axios from 'axios';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function BookDetails(props) {
+  const {
+    isAuthenticated,
+    isLoading,
+    loginWithRedirect,
+    error,
+  } = useAuth0();
   const  {id}  = useParams();
   const {path} = (props.title);
   // console.log(path);
@@ -71,21 +78,19 @@ export default function BookDetails(props) {
   };
 
   const handleCheckout = async () => {
-    // Initialize Stripe
-    const total = (product.price*quantity);
-    if(total>0){
-       
-    const stripe = await stripePromise;
-
-    // Call backend to create a Checkout session
-    const { data } = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/checkout/create-session', {
-      price: total, // Send the price or product info to the backend
-      name :(product.name),
-      description:(product.description)
+    if (isAuthenticated) {
+   // Initialize Stripe
+   const total = (product.price*quantity);
+   if(total>0){
       
+   const stripe = await stripePromise;
 
+   // Call backend to create a Checkout session
+   const { data } = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/checkout/create-session', {
+     price: total, // Send the price or product info to the backend
+     name :(product.name),
+     description:(product.description)
     });
-
     // Redirect to the Stripe-hosted payment page (session URL is returned from backend)
     const result = await stripe.redirectToCheckout({
       sessionId: data.id, // The session ID returned from backend
@@ -95,6 +100,18 @@ export default function BookDetails(props) {
       console.error(result.error.message);
     }
     }
+  
+    }
+    else{
+      navigate('/profile');
+    }
+
+   
+      
+
+    
+
+    
   };
   
    
