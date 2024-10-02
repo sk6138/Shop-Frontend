@@ -39,7 +39,7 @@ const LoginButton = () => {
   
 
   return (
-    <button onClick={(loginWithRedirect,goto)}>
+    <button onClick={(loginWithRedirect)}>
       Log In
     </button>
     
