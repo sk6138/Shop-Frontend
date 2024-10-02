@@ -20,8 +20,8 @@ export default function App() {
  <BrowserRouter>
  <Routes>
   <Route path='/' element={<Home/>}/>
-  <Route path='/cancel' element={<Cancel/>}/>
-  <Route path='/success' element={<Success/>}/>
+  <Route path='/cancel/' element={<Cancel/>}/>
+  <Route path='/success/' element={<Success/>}/>
   <Route path="/books/:id" element={<BookDetails title="books" />} />
   <Route path="/notebooks/:id" element={<BookDetails title="notebooks" />} />
   <Route path='/search' element={<Search/>}/>
