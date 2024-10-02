@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "build" }
+      }
+    ],
+    "rewrites": [
+      { "source": "/success", "destination": "/index.html" },
+      { "source": "/(.*)", "destination": "/index.html" }
+    ]
+  }
+  
