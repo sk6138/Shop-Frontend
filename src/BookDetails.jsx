@@ -53,7 +53,7 @@ export default function BookDetails(props) {
     }
     
   const addToCart = () => {
-    const productWithQuantity = { ...product, quantity, totalPrice: product.price * quantity };
+    const productWithQuantity = { ...product,image :product.image, quantity, totalPrice: product.price * quantity };
     console.log(productWithQuantity);
     // Check if the product is already in the cart
     const existingProductIndex = cart.findIndex(item => item.id === productWithQuantity.id);
@@ -62,9 +62,10 @@ export default function BookDetails(props) {
       // Update the quantity and total price if product already exists
       const updatedCart = cart.map((item, index) =>
         index === existingProductIndex
-          ? { ...item, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
+          ? { ...item,image :product.image, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
           : item
       );
+
       setCart(updatedCart);
     } else {
       // Add the product to the cart if it's not there already
