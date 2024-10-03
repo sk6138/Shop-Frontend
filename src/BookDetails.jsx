@@ -67,6 +67,12 @@ export default function BookDetails(props) {
           : item
       );
       console.log(product);
+      console.log(user.sub);
+      console.log(product.image);
+      console.log(product.id);
+      console.log(product.name);
+      console.log(product.price);
+      console.log(product.quantity);
 
       setCart(updatedCart);
     } else {
@@ -75,7 +81,7 @@ export default function BookDetails(props) {
           userId: (user.sub),
           image: product.image,
           productId: product.id,
-          productName: product.Name,
+          productName: product.name,
           price: product.price,
           quantity: product.quantity,
         });
