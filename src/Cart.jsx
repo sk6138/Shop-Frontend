@@ -20,7 +20,8 @@ export default function Cart() {
               <p>Price: ${product.price}</p>
               <p>Quantity: {product.quantity}</p>
               <p>Total Price: ${product.totalPrice}</p>
-              <img src="${product.image}" alt="" />
+              <p>${product}</p>
+              
             
             <h2>Total Cart Price: ${totalCartPrice}</h2>
           </div>
