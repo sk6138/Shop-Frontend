@@ -20,7 +20,7 @@ export default function Cart() {
   // const { cart } = location.state || { cart: [] };
   // const totalCartPrice = cart.reduce((total, item) => total + item.totalPrice, 0);
   // console.log(cart);
-  const userid = (user.sub);
+  const userid = (user.email);
   console.log(userid);
   const url =`https://shop-backend-production-d74a.up.railway.app/api/cart/${userid}`;
 

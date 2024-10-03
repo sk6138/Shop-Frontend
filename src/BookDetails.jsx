@@ -69,19 +69,21 @@ export default function BookDetails(props) {
           ? { ...item,image :item.image, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
           : item
       );
-      console.log(product);
-      console.log(user.sub);
-      console.log(product.image);
-      console.log(product.id);
-      console.log(product.name);
-      console.log(product.price);
-      console.log(quantity);
+     
 
       setCart(updatedCart);
     } else {
       try {
-        const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/cart/add', {
-          userId: (user.sub),
+        console.log(product);
+        console.log(user.email);
+        console.log(product.image);
+        console.log(product.id);
+        console.log(product.name);
+        console.log(product.price);
+        console.log(quantity);
+
+         await axios.post('https://shop-backend-production-d74a.up.railway.app/api/cart/add', {
+          userId: (user.email),
           image: product.image,
           productId: product.id,
           productName: product.name,
