@@ -10,6 +10,9 @@ import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { useAuth0 } from "@auth0/auth0-react";
+import Swal from 'sweetalert2';
+
+
 
 
 export default function BookDetails(props) {
@@ -72,7 +75,7 @@ export default function BookDetails(props) {
       console.log(product.id);
       console.log(product.name);
       console.log(product.price);
-      console.log(product.quantity);
+      console.log(quantity);
 
       setCart(updatedCart);
     } else {
@@ -83,9 +86,19 @@ export default function BookDetails(props) {
           productId: product.id,
           productName: product.name,
           price: product.price,
-          quantity: product.quantity,
+          quantity: quantity,
         });
         console.log("ok");
+        Swal.fire({
+          title: 'Success!',
+          text: `${product.productName} has been added to your cart!`,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 2000, // Auto-close after 2 seconds
+          toast: true, // Make it a small notification
+          position: 'top-right'
+        });
+
         
       } catch (e) {
         console.log(e);
