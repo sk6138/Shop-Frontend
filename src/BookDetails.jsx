@@ -10,7 +10,6 @@ import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { useAuth0 } from "@auth0/auth0-react";
-const { user, isAuthenticated } = useAuth0();
 
 
 export default function BookDetails(props) {
@@ -30,7 +29,6 @@ export default function BookDetails(props) {
   const [cart, setCart] = useState([]); 
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-  const [cartMessage, setCartMessage] = useState("");
 
 
 
@@ -54,55 +52,25 @@ export default function BookDetails(props) {
       return <div>Loading...</div>;
     }
     
-
-    const addToCart = async () => {
-      if (!isAuthenticated) {
-        setCartMessage("Please log in to add items to the cart.");
-        return;
-      }
-      const userId = user.sub; // Replace with dynamic user ID from auth or context
-  
-      try {
-        // Use axios to make the POST request
-        const response = await axios.post("https://shop-backend-production-d74a.up.railway.app/api/cart/add", {
-          userId: userId,
-          item: {
-            productId: product.id,
-            productName: product.name,
-            productImage: product.image,
-            price: product.price,
-            quantity: quantity, // Default quantity, or you can allow users to change it
-          },
-        });
-  
-        if (response.status === 200) {
-          setCartMessage("Item added to cart successfully!");
-        }
-      } catch (error) {
-        console.error("Error adding to cart:", error);
-        setCartMessage("Failed to add item to cart.");
-      }
-    };
+  const addToCart = () => {
+    const productWithQuantity = { ...product, quantity, totalPrice: product.price * quantity };
+    console.log(productWithQuantity);
+    // Check if the product is already in the cart
+    const existingProductIndex = cart.findIndex(item => item.id === productWithQuantity.id);
     
-  // const addToCart = () => {
-  //   const productWithQuantity = { ...product, quantity, totalPrice: product.price * quantity };
-  //   console.log(productWithQuantity);
-  //   // Check if the product is already in the cart
-  //   const existingProductIndex = cart.findIndex(item => item.id === productWithQuantity.id);
-    
-  //   if (existingProductIndex !== -1) {
-  //     // Update the quantity and total price if product already exists
-  //     const updatedCart = cart.map((item, index) =>
-  //       index === existingProductIndex
-  //         ? { ...item, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
-  //         : item
-  //     );
-  //     setCart(updatedCart);
-  //   } else {
-  //     // Add the product to the cart if it's not there already
-  //     setCart((prevCart) => [...prevCart, productWithQuantity]);
-  //   }
-  // };
+    if (existingProductIndex !== -1) {
+      // Update the quantity and total price if product already exists
+      const updatedCart = cart.map((item, index) =>
+        index === existingProductIndex
+          ? { ...item, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
+          : item
+      );
+      setCart(updatedCart);
+    } else {
+      // Add the product to the cart if it's not there already
+      setCart((prevCart) => [...prevCart, productWithQuantity]);
+    }
+  };
 
   // Handle navigation to the cart page and pass the cart array
   const handleGoToCart = () => {
@@ -182,8 +150,6 @@ export default function BookDetails(props) {
         <button className={styles["product-page__button--buy"]} onClick={handleCheckout}>
             Buy Now
         </button>
-
-        {cartMessage && <p>{cartMessage}</p>}
         
     </div>
 
