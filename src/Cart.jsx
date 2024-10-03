@@ -18,7 +18,9 @@ export default function Cart() {
   // const { cart } = location.state || { cart: [] };
   // const totalCartPrice = cart.reduce((total, item) => total + item.totalPrice, 0);
   // console.log(cart);
-  const url =`https://shop-backend-production-d74a.up.railway.app/api/cart/${user.sub}`;
+  const userid = (user.sub);
+  console.log(userid);
+  const url =`https://shop-backend-production-d74a.up.railway.app/api/cart/${userid}`;
 
   useEffect(() => {
     // Call the API when the component mounts https://www.dbooks.org/api/recent
