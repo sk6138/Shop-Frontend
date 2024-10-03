@@ -17,6 +17,7 @@ export default function BookDetails(props) {
     isAuthenticated,
     isLoading,
     loginWithRedirect,
+    user,
     error,
   } = useAuth0();
   const  {id}  = useParams();
@@ -70,7 +71,7 @@ export default function BookDetails(props) {
     } else {
       try {
         const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/cart/add', {
-          userId: product.Id,
+          userId: (user.sub),
           image: product.image,
           productId: product.Id,
           productName: product.Name,
