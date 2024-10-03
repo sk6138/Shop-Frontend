@@ -62,7 +62,7 @@ export default function BookDetails(props) {
       // Update the quantity and total price if product already exists
       const updatedCart = cart.map((item, index) =>
         index === existingProductIndex
-          ? { ...item,image :product.image, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
+          ? { ...item,image :item.image, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
           : item
       );
 
