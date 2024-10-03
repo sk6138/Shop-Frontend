@@ -50,14 +50,16 @@ export default function Cart() {
       
       {data.length > 0 ? (
         data.map((product, index) => (
+         
           <div key={index}>
-             <p>Product Name: {product.name}</p>
+            <p>Product Name: {product.productId}</p>
+             <p>Product Name: {product.productName}</p>
               <p>Price: ${product.price}</p>
               <p>Quantity: {product.quantity}</p>
-              <p>Total Price: ${product.totalPrice}</p>
+              <p>Total Price: ${product.total}</p>
               <img src={product.image} alt={product.name} />
             
-            <h2>Total Cart Price: ${product.total}</h2>
+            {/* <h2>Total Cart Price: ${product.total}</h2> */}
           </div>
           
         ))
