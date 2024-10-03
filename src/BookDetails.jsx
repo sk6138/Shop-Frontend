@@ -66,6 +66,7 @@ export default function BookDetails(props) {
           ? { ...item,image :item.image, quantity: item.quantity + quantity, totalPrice: (item.quantity + quantity) * item.price }
           : item
       );
+      console.log(product);
 
       setCart(updatedCart);
     } else {
@@ -73,7 +74,7 @@ export default function BookDetails(props) {
         const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/cart/add', {
           userId: (user.sub),
           image: product.image,
-          productId: product.Id,
+          productId: product.id,
           productName: product.Name,
           price: product.price,
           quantity: product.quantity,
