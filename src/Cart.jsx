@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import { useLocation } from 'react-router-dom';
 import  { useState, useEffect } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Cart() {
   const [data, setData] = useState([]);
