@@ -94,7 +94,7 @@ export default function BookDetails(props) {
           text: `${product.productName} has been added to your cart!`,
           icon: 'success',
           showConfirmButton: false,
-          timer: 2000, // Auto-close after 2 seconds
+          timer: 4000, // Auto-close after 2 seconds
           toast: true, // Make it a small notification
           position: 'top-right'
         });
