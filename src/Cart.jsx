@@ -57,7 +57,7 @@ export default function Cart() {
               <p>Total Price: ${product.totalPrice}</p>
               <img src={product.image} alt={product.name} />
             
-            <h2>Total Cart Price: ${totalCartPrice}</h2>
+            <h2>Total Cart Price: ${product.total}</h2>
           </div>
           
         ))
