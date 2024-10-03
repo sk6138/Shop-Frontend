@@ -52,7 +52,7 @@ export default function BookDetails(props) {
       return <div>Loading...</div>;
     }
     
-  const addToCart = () => {
+  const addToCart = async () => {
     const productWithQuantity = { ...product,image :product.image, quantity, totalPrice: product.price * quantity };
     console.log(productWithQuantity);
     // Check if the product is already in the cart
@@ -68,7 +68,21 @@ export default function BookDetails(props) {
 
       setCart(updatedCart);
     } else {
-      // Add the product to the cart if it's not there already
+      try {
+        const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/cart/add', {
+          userId: product.Id,
+          image: product.image,
+          productId: product.Id,
+          productName: product.Name,
+          price: product.price,
+          quantity: product.quantity,
+        });
+        console.log("ok");
+        
+      } catch (e) {
+        console.log(e);
+      }
+     
       setCart((prevCart) => [...prevCart, productWithQuantity]);
     }
   };
