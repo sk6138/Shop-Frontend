@@ -37,7 +37,7 @@ import React from 'react'
 export default function LatestProduct() {
   return (
     <div>
-      hii
+      hii jjkjfkjfl
     </div>
   )
 }
