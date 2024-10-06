@@ -54,7 +54,7 @@ export default function Cart() {
   console.log(data);
 
   
-  removecart =(id)=>{
+  const removecart =  (id) => {
     try {
       const response =  axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${id}`);
       console.log('Item deleted:', response.data);
