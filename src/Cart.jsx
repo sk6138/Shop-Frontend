@@ -85,6 +85,15 @@ export default function Cart() {
           const response = await axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${CartId}`);
           if (response.status === 200) {
               // Call onRemove (optional) to update the cart in the parent component
+                    Swal.fire({
+        title: 'alert!',
+        text: `${product.productName} has been added to your cart!`,
+        icon: 'success',
+        showConfirmButton: true,
+        timer: 4000, // Auto-close after 2 seconds
+        toast: true, // Make it a small notification
+        position: 'top-right'
+      });
               console.log('Item removed from cart');
           }
       } catch (error) {
