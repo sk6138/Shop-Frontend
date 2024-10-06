@@ -5,9 +5,11 @@ import  { useState, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 export default function Cart() {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   const {
     isAuthenticated,
     isLoading,
@@ -20,7 +22,14 @@ export default function Cart() {
   // const { cart } = location.state || { cart: [] };
   // const totalCartPrice = cart.reduce((total, item) => total + item.totalPrice, 0);
   // console.log(cart);
-  const userid = (user.email);
+  let userid="sahil";
+  if(isAuthenticated){
+    userid = (user.email);
+  }
+  else{
+    navigate('/profile');
+  }
+   
   console.log(userid);
   const url =`https://shop-backend-production-d74a.up.railway.app/api/cart/${userid}`;
 
@@ -88,7 +97,7 @@ export default function Cart() {
               <p>Quantity: {product.quantity}</p>
               <p>Total Price: ${product.total}</p>
               <img src={product.image} alt={product.name} />
-              <button onClick={removecart((product.id))}>Remove</button>
+              {/* <button onClick={removecart((product.id))}>Remove</button> */}
               <hr />
             {/* <h2>Total Cart Price: ${product.total}</h2> */}
           </div>

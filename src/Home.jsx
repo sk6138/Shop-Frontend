@@ -27,14 +27,11 @@ export default function Home() {
    if(!isAuthenticated){
     navigate('/profile');
    }
-   else{
-    window.globalThis=user.email;
-    console.log(window.globalThis);
-   }
+   
   return (
     <div>
 
-{isAuthenticated ? (
+
       <div>
         <Navbar id="nav"/>
         <ScrollToTop/>
@@ -45,16 +42,7 @@ export default function Home() {
         <Footer companyName="shop" devloper="Sahil" path="#nav"/> 
       </div>
       
-    ):
-    (
-      <div>
-        {/* {
-          navigate('/profile');
-        } */}
-      
-      </div>
-    )
-  }
+  
       
       </div>
          
