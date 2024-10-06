@@ -78,22 +78,22 @@ export default function Cart() {
     //  }
 
  
-    const removeCart = async (productId) => {
-      setbtnLoading(true);  // Show loading state
-      try {
-          // Make DELETE request to API to remove item from cart
-          const response = await axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${productId}`);
-          if (response.status === 200) {
-              // Call onRemove (optional) to update the cart in the parent component
-              onRemove(productId);
-              console.log('Item removed from cart');
-          }
-      } catch (error) {
-          console.error('Error removing item from cart:', error);
-      } finally {
-          setbtnLoading(false);  // Reset loading state
-      }
-    }
+    // const removeCart = async (productId) => {
+    //   setbtnLoading(true);  // Show loading state
+    //   try {
+    //       // Make DELETE request to API to remove item from cart
+    //       const response = await axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${productId}`);
+    //       if (response.status === 200) {
+    //           // Call onRemove (optional) to update the cart in the parent component
+    //           onRemove(productId);
+    //           console.log('Item removed from cart');
+    //       }
+    //   } catch (error) {
+    //       console.error('Error removing item from cart:', error);
+    //   } finally {
+    //       setbtnLoading(false);  // Reset loading state
+    //   }
+    // }
    
   
   
@@ -110,7 +110,8 @@ export default function Cart() {
         data.map((product, index) => (
          
           <div key={index}>
-            <p>Product Name: {product.productId}</p>
+            <p>Cart Id : {product.id}</p>
+            <p>Product Id: {product.productId}</p>
              <p>Product Name: {product.productName}</p>
               <p>Price: ${product.price}</p>
               <p>Quantity: {product.quantity}</p>
