@@ -54,9 +54,9 @@ export default function Cart() {
   console.log(data);
 
   
-  const removecart = async (id) => {
+  removecart =(id)=>{
     try {
-      const response = await axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${id}`);
+      const response =  axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${id}`);
       console.log('Item deleted:', response.data);
       Swal.fire({
         title: 'alert!',
@@ -97,7 +97,7 @@ export default function Cart() {
               <p>Quantity: {product.quantity}</p>
               <p>Total Price: ${product.total}</p>
               <img src={product.image} alt={product.name} />
-              {/* <button onClick={removecart((product.id))}>Remove</button> */}
+              <button onClick={removecart((product.id))}>Remove</button>
               <hr />
             {/* <h2>Total Cart Price: ${product.total}</h2> */}
           </div>
