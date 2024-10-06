@@ -18,6 +18,7 @@ export default function Cart() {
     error,
   } = useAuth0();
   const [loading, setLoading] = useState(true);
+  const [btnloading, setbtnLoading] = useState(false);
   const location = useLocation();
   // const { cart } = location.state || { cart: [] };
   // const totalCartPrice = cart.reduce((total, item) => total + item.totalPrice, 0);
@@ -54,29 +55,47 @@ export default function Cart() {
   console.log(data);
 
   
-  const removecart =  (id) => {
-    try {
-      const response =  axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${id}`);
-      console.log('Item deleted:', response.data);
-      Swal.fire({
-        title: 'alert!',
-        text: `${product.productName} has been added to your cart!`,
-        icon: 'success',
-        showConfirmButton: true,
-        timer: 4000, // Auto-close after 2 seconds
-        toast: true, // Make it a small notification
-        position: 'top-right'
-      });
+  // const removecart =  (id) => {
+  //   try {
+  //     const response =  axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${id}`);
+  //     console.log('Item deleted:', response.data);
+  //     Swal.fire({
+  //       title: 'alert!',
+  //       text: `${product.productName} has been added to your cart!`,
+  //       icon: 'success',
+  //       showConfirmButton: true,
+  //       timer: 4000, // Auto-close after 2 seconds
+  //       toast: true, // Make it a small notification
+  //       position: 'top-right'
+  //     });
       
-      // Show success notification or reload the cart items here
-    } catch (error) {
-      console.error('Error deleting the item:', error);
-      // Show error notification here
-    }
+  //     // Show success notification or reload the cart items here
+  //   } catch (error) {
+  //     console.error('Error deleting the item:', error);
+  //     // Show error notification here
+  //   }
   
+    //  }
+
+ 
+    const removeCart = async (productId) => {
+      setbtnLoading(true);  // Show loading state
+      try {
+          // Make DELETE request to API to remove item from cart
+          const response = await axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${productId}`);
+          if (response.status === 200) {
+              // Call onRemove (optional) to update the cart in the parent component
+              onRemove(productId);
+              console.log('Item removed from cart');
+          }
+      } catch (error) {
+          console.error('Error removing item from cart:', error);
+      } finally {
+          setbtnLoading(false);  // Reset loading state
+      }
     }
    
-
+  
   
   
 
@@ -97,7 +116,12 @@ export default function Cart() {
               <p>Quantity: {product.quantity}</p>
               <p>Total Price: ${product.total}</p>
               <img src={product.image} alt={product.name} />
-              <button onClick={removecart((product.id))}>Remove</button>
+              <button
+                onClick={() => removeCart(product.id)}  // Call removeCart with the product's ID
+                disabled={btnloading}  // Disable button if loading
+            >
+                {btnloading ? 'Removing...' : 'Remove'}
+            </button>
               <hr />
             {/* <h2>Total Cart Price: ${product.total}</h2> */}
           </div>
