@@ -7,11 +7,14 @@ import Footer from './Footer'
 import ScrollToTop from './ScrollToTop'
 import NotebookCardContainer from './NotebookCardContainer'
 import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from 'react-router-dom';
+
 
 
 
 
 export default function Home() {
+  const navigate = useNavigate();
   const {
     isAuthenticated,
     isLoading,
@@ -20,16 +23,39 @@ export default function Home() {
     user
   } = useAuth0();
  
+
+   if(!isAuthenticated){
+    navigate('/profile');
+   }
+   else{
+    window.globalThis=user.email;
+    console.log(window.globalThis);
+   }
   return (
     <div>
-       <Navbar id="nav"/>
-       <ScrollToTop/>
-     <HeroPage/>
-     
-      <CardContainer title=" Books" />
-      <NotebookCardContainer title=" NoteBooks"/>
-      {/* <CardContainer title=" Accesaries"/> */}
-      <Footer companyName="shop" devloper="Sahil" path="#nav"/>
+
+{isAuthenticated ? (
+      <div>
+        <Navbar id="nav"/>
+        <ScrollToTop/>
+        <HeroPage/>
+        <CardContainer title=" Books" />
+        <NotebookCardContainer title=" NoteBooks"/>
+        <CardContainer title=" Accesaries"/>
+        <Footer companyName="shop" devloper="Sahil" path="#nav"/> 
+      </div>
+      
+    ):
+    (
+      <div>
+        {/* {
+          navigate('/profile');
+        } */}
+      
+      </div>
+    )
+  }
+      
       </div>
          
         
