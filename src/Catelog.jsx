@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './Catelog.css';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 
 export default function Catelog() {
   return (
    
-    
+    <div>
+    <Navbar/>
        <div className="product-type-container">
       <h1 className="title">Explore Our Product Categories</h1>
       <div className="product-list">
@@ -38,6 +41,8 @@ export default function Catelog() {
           </Link>
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
    
   )

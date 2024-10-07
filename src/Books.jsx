@@ -6,6 +6,7 @@ import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function Books() {
     
@@ -62,6 +63,7 @@ export default function Books() {
       </div> */}
       
       </div>
+      <Footer/>
       </div>
    
   )

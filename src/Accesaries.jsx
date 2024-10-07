@@ -6,6 +6,7 @@ import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function Accesaries() {
     
@@ -62,6 +63,7 @@ export default function Accesaries() {
       </div> */}
       
       </div>
+      <Footer/>
       </div>
    
   )

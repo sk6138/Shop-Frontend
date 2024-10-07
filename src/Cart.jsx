@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 
 export default function Cart() {
   const [data, setData] = useState([]);
@@ -164,6 +165,7 @@ export default function Cart() {
         <p>No products added to the cart</p>
       )}
     </div>
+    <Footer/>
     </div>
   )
 };
