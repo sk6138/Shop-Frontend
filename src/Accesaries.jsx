@@ -43,13 +43,13 @@ export default function Accesaries() {
     <div>
         <Navbar/>
        <div className="cardContainer">
-      <h3>Featured Books</h3>
+      <h3>Featured Accessaries</h3>
       <div className="Feature-card">
       {/*  */}
       {data.map((item, index) => (
         <div className="carddiv">
 
-                <ProductCard  detail={item} title="books"/>
+                <ProductCard  detail={item} title="Accessaries"/>
                 </div>
             ))}
            

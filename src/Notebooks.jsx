@@ -49,7 +49,7 @@ export default function Notebooks() {
       {data.map((item, index) => (
         <div className="carddiv">
 
-                <ProductCard  detail={item} title="books"/>
+                <ProductCard  detail={item} title="Notebooks"/>
                 </div>
             ))}
            
