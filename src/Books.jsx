@@ -41,7 +41,7 @@ export default function Books() {
   return (
     <div>
        <div className="cardContainer">
-      <h3>Featured {props.title}</h3>
+      <h3>Featured Books</h3>
       <div className="Feature-card">
       {/*  */}
       {data.map((item, index) => (
@@ -56,7 +56,7 @@ export default function Books() {
       </div>
       <div className="CardButton"
       onClick={goto}>
-      <Button  title={props.title}/>
+      <Button  title="Books"/>
       </div>
       
       </div>
