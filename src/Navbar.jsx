@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { NavLink} from 'react-router-dom';
+import axios from 'axios';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./Navbar.css"; // Assuming you have a CSS file for styling
@@ -87,12 +88,9 @@ function Navbar() {
           <input
             type="text"
             className="big-search-bar"
-            
-           
-            
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search..."
+            placeholder="Search....."
           
             autoFocus
           />
