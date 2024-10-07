@@ -46,7 +46,7 @@ export default function Cart() {
         console.error('Error fetching the API', error);
         setLoading(false);
       });
-  }, [reload]); 
+  }, []); 
 
   if (loading) {
     return <div>Loading...</div>;
@@ -77,6 +77,22 @@ export default function Cart() {
   //   }
   
     //  }
+    const getdata = () => {
+      // Call the API when the component mounts https://www.dbooks.org/api/recent
+      axios.get(url)
+        .then(response => {
+          setData(response.data);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.error('Error fetching the API', error);
+          setLoading(false);
+        });
+    }; 
+  
+    if (loading) {
+      return <div>Loading...</div>;
+    }
 
  
     const removeCart = async (CartId) => {
@@ -96,9 +112,9 @@ export default function Cart() {
                 position: 'top-right'
               });
               console.log('Item removed from cart');
+              getdata();
              
-             { () => setreload(true);
-             }
+            
           
       } catch (error) {
           console.error('Error removing item from cart:', error);
