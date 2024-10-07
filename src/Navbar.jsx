@@ -3,10 +3,13 @@ import { NavLink} from 'react-router-dom';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./Navbar.css"; // Assuming you have a CSS file for styling
+import LatestProduct from './LatestProduct';
 function Navbar() {
 
     const [isSearchActive, setSearchActive] = useState(false);
     const [isButtonHovered, setButtonHovered] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [results, setResults] = useState([]);
     
 
     const handleSearchClick = (event) => {
@@ -18,9 +21,18 @@ function Navbar() {
       setSearchActive(false);
     };
 
-    const handleSearchSubmit = () => {
+    const handleSearchSubmit = async () => {
         console.log("Search submitted");
-        // Add search functionality here
+        try {
+          const response = await axios.get('http://localhost:8080/api/search', {
+            params: { term: searchTerm },
+          });
+          setResults(response.data);
+          <LatestProduct data={results}/>
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+        
       };
 
       const handleButtonMouseEnter = () => {
@@ -60,9 +72,7 @@ function Navbar() {
     })} className="nav-link" >
         Contact
       </NavLink>
-          {/* <a href="/">Home</a>
-          <a href="/catalog">Catalog</a>
-          <a href="/contact">Contact</a> */}
+         
         </div>
       </div>
       <div className="Navbar-center">
@@ -77,7 +87,13 @@ function Navbar() {
           <input
             type="text"
             className="big-search-bar"
-            placeholder="Search for anything..."
+            
+           
+            
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search..."
+          
             autoFocus
           />
   
