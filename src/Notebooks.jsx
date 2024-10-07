@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 
-export default function Books() {
+export default function Notebooks() {
     
    const navigate = useNavigate();
      const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ export default function Books() {
   
     useEffect(() => {
       // Call the API when the component mounts https://www.dbooks.org/api/recent
-      axios.get('https://shop-backend-production-d74a.up.railway.app/api/books/all')
+      axios.get('https://shop-backend-production-d74a.up.railway.app/api/notebooks/all')
         .then(response => {
           setData(response.data);
           setLoading(false);
@@ -43,7 +43,7 @@ export default function Books() {
     <div>
         <Navbar/>
        <div className="cardContainer">
-      <h3>Featured Books</h3>
+      <h3>Featured Notebooks</h3>
       <div className="Feature-card">
       {/*  */}
       {data.map((item, index) => (
@@ -58,7 +58,7 @@ export default function Books() {
       </div>
       {/* <div className="CardButton"
       onClick={goto}>
-      <Button  title="Books"/>
+      <Button  title="Notebooks"/>
       </div> */}
       
       </div>
