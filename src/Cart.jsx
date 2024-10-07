@@ -95,7 +95,7 @@ export default function Cart() {
                 position: 'top-right'
               });
               console.log('Item removed from cart');
-              window.location.reload();
+              navigate('/cart');
 
           }
       } catch (error) {
