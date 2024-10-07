@@ -4,13 +4,12 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./Navbar.css"; // Assuming you have a CSS file for styling
-import LatestProduct from './LatestProduct';
 function Navbar() {
    const navigate = useNavigate();
     const [isSearchActive, setSearchActive] = useState(false);
     const [isButtonHovered, setButtonHovered] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    const [results, setResults] = useState([]);
+    const [data, setData] = useState([]);
     
 
     const handleSearchClick = (event) => {
@@ -29,9 +28,9 @@ function Navbar() {
             params: { term: searchTerm },
           });
           console.log(response.data);
-          setResults(response.data);
-          console.log(results);
-          navigate('/latest', { state: { results } });
+          setData(response.data);
+          console.log(data);
+          navigate('/latest', { state: { data } });
         } catch (error) {
           console.error('Error fetching data:', error);
         }
