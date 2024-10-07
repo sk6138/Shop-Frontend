@@ -95,6 +95,8 @@ export default function Cart() {
                 position: 'top-right'
               });
               console.log('Item removed from cart');
+              window.location.reload();
+
           }
       } catch (error) {
           console.error('Error removing item from cart:', error);
