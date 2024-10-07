@@ -49,7 +49,7 @@ export default function Accesaries() {
       {data.map((item, index) => (
         <div className="carddiv">
 
-                <ProductCard  detail={item} title="Accessaries"/>
+                <ProductCard  detail={item} title="books"/>
                 </div>
             ))}
            
