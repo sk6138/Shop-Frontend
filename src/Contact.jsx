@@ -56,6 +56,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Contact.css';
+import Swal from 'sweetalert2';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -65,7 +66,7 @@ const Contact = () => {
     message: ''
   });
 
-  const [statusMessage, setStatusMessage] = useState('');
+  
 
   // Handle input change
   const handleChange = (e) => {
@@ -81,21 +82,39 @@ const Contact = () => {
 
     try {
       // Send form data to the backend API
-      const response = await axios.post('https://your-backend-api-url.com/messages', formData);
+      const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/contact/post', formData);
       
       // Clear form and show success message
       setFormData({
+        
         name: '',
         email: '',
         subject: '',
         message: ''
       });
       
-      setStatusMessage('Message sent successfully!');
+      Swal.fire({
+        title: 'Success!',
+        text: `Message sent successfully! `,
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 4000, // Auto-close after 2 seconds
+        toast: true, // Make it a small notification
+        position: 'top-right'
+      });
 
     } catch (error) {
       console.error('There was an error sending the message:', error);
-      setStatusMessage('Failed to send message. Please try again.');
+      Swal.fire({
+        title: 'Error!',
+        text: `Failed to send message. Please try again.`,
+        icon: 'error',
+        showConfirmButton: false,
+        timer: 4000, // Auto-close after 2 seconds
+        toast: true, // Make it a small notification
+        position: 'top-right'
+      });
+      
     }
   };
 
@@ -160,7 +179,7 @@ const Contact = () => {
             <button type="submit" className="submit-btn">Send Message</button>
           </div>
         </form>
-        {statusMessage && <p className="status-message">{statusMessage}</p>}
+       
       </div>
 
       <div className="contact-info">
