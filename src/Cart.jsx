@@ -101,6 +101,19 @@ export default function Cart() {
       } finally {
           setbtnLoading(false);  // Reset loading state
       }
+
+      useEffect(() => {
+        // Call the API when the component mounts https://www.dbooks.org/api/recent
+        axios.get(url)
+          .then(response => {
+            setData(response.data);
+            setLoading(false);
+          })
+          .catch(error => {
+            console.error('Error fetching the API', error);
+            setLoading(false);
+          });
+      }, []);
     }
    
   
