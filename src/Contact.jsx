@@ -57,6 +57,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Contact.css';
 import Swal from 'sweetalert2';
+import Navbar from './Navbar';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -119,6 +120,9 @@ const Contact = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
+    
     <div className="contact-page">
       <div className="contact-header">
         <h1>Contact Us</h1>
@@ -188,6 +192,7 @@ const Contact = () => {
         <p><strong>Phone:</strong> +1 234 567 890</p>
         <p><strong>Address:</strong> 123 Study Lane, Learning City, ABC 12345</p>
       </div>
+    </div>
     </div>
   );
 };
