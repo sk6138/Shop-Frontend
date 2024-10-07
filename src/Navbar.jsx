@@ -30,6 +30,7 @@ function Navbar() {
           });
           console.log(response.data);
           setResults(response.data);
+          console.log(results);
           navigate('/latest', { state: { results } });
         } catch (error) {
           console.error('Error fetching data:', error);

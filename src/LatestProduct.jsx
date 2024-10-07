@@ -3,10 +3,11 @@ import ProductCard from './ProductCard'
 import './Home.css'
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { useLocation } from 'react-router-dom';
 
 export default function LatestProduct(props) {
-  const result = props.data;
-  console.log(result);
+  const results = location.state?.results || []; 
+  console.log(results);
   return (
     <div>
 
@@ -15,7 +16,7 @@ export default function LatestProduct(props) {
       <h3>Featured Books</h3>
       <div className="Feature-card">
       {/*  */}
-      {result.map((item, index) => (
+      {results.map((item, index) => (
         <div className="carddiv">
 
                 <ProductCard  detail={item} title="notebooks"/>
