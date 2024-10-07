@@ -14,6 +14,7 @@ import Success from './Success';
 import Catelog from './Catelog';
 import Books from './Books';
 import Notebooks from './Notebooks';
+import Accesaries from './Accesaries';
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
   <Route path='/catelog' element={<Catelog/>}/>
   <Route path='/books' element={<Books title="books"/>}/>
   <Route path='/notebooks' element={<Notebooks />}/>
+  <Route path='/accesaries' element={<Accesaries />}/>
   <Route path="/books/:id" element={<BookDetails title="books" />} />
   <Route path="/notebooks/:id" element={<BookDetails title="notebooks" />} />
   <Route path='/search' element={<Search/>}/>
