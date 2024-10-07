@@ -11,6 +11,7 @@ import LatestProduct from './LatestProduct';
 import ProductLists from './ProductLists';
 import Cancel from './Cancel';
 import Success from './Success';
+import Catelog from './Catelog';
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
   <Route path='/' element={<Home/>}/>
   <Route path='/cancel' element={<Cancel/>}/>
   <Route path='/success' element={<Success/>}/>
+  <Route path='/catelog' element={<Catelog/>}/>
   <Route path="/books/:id" element={<BookDetails title="books" />} />
   <Route path="/notebooks/:id" element={<BookDetails title="notebooks" />} />
   <Route path='/search' element={<Search/>}/>
