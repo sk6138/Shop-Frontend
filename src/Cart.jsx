@@ -20,6 +20,7 @@ export default function Cart() {
   const [loading, setLoading] = useState(true);
   const [btnloading, setbtnLoading] = useState(false);
   const location = useLocation();
+  const [reload,setreload]=useState(true);
   // const { cart } = location.state || { cart: [] };
   // const totalCartPrice = cart.reduce((total, item) => total + item.totalPrice, 0);
   // console.log(cart);
@@ -83,7 +84,7 @@ export default function Cart() {
       try {
           // Make DELETE request to API to remove item from cart
           const response = await axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${CartId}`);
-          if (response.status === 200) {
+          
               // Call onRemove (optional) to update the cart in the parent component
               Swal.fire({
                 title: 'Success!',
@@ -95,9 +96,9 @@ export default function Cart() {
                 position: 'top-right'
               });
               console.log('Item removed from cart');
-              navigate('/cart');
+             
 
-          }
+          
       } catch (error) {
           console.error('Error removing item from cart:', error);
       } finally {
@@ -107,7 +108,7 @@ export default function Cart() {
       
     }
    
-  
+   let total=0;
   
   
 
@@ -117,32 +118,39 @@ export default function Cart() {
       <Navbar/>
        <div>
       <h1>Cart</h1>
-      
-      {data.length > 0 ? (
-        data.map((product, index) => (
-         
-          <div key={index}>
-            <p>Cart Id : {product.id}</p>
-            <p>Product Id: {product.productId}</p>
-             <p>Product Name: {product.productName}</p>
-              <p>Price: ${product.price}</p>
-              <p>Quantity: {product.quantity}</p>
-              <p>Total Price: ${product.total}</p>
-              <img src={product.image} alt={product.name} />
-              <button
-                onClick={() => removeCart(product.id)}  // Call removeCart with the product's ID
-                disabled={btnloading}  // Disable button if loading
-            >
-                {btnloading ? 'Removing...' : 'Remove'}
-            </button>
-              <hr />
-            {/* <h2>Total Cart Price: ${product.total}</h2> */}
-          </div>
+      if({reload}){
           
-        ))
-      ) : (
-        <p>No products added to the cart</p>
-      )}
+            data.map((product, index) => (
+             
+              <div key={index}>
+                <p>Cart Id : {product.id}</p>
+                <p>Product Id: {product.productId}</p>
+                 <p>Product Name: {product.productName}</p>
+                  <p>Price: ${product.price}</p>
+                  <p>Quantity: {product.quantity}</p>
+                  <p>Total Price: ${product.total}</p>
+                  
+                    {total}+=${product.total}
+                  
+                  <img src={product.image} alt={product.name} />
+                  <button
+                    onClick={() => removeCart(product.id)}  // Call removeCart with the product's ID
+                    disabled={btnloading}  // Disable button if loading
+                >
+                    {btnloading ? 'Removing...' : 'Remove'}
+                </button>
+                  <hr />
+                
+              </div>
+              
+            ))
+          
+            
+
+      }
+
+       <h2>Total Cart Price: ${total}</h2> 
+    
     </div>
     </div>
   )
