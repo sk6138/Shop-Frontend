@@ -23,9 +23,9 @@ function Navbar() {
     };
 
     const handleSearchSubmit = async () => {
-        console.log("Search submitted");
+        
         try {
-          const response = await axios.get('http://localhost:8080/api/search', {
+          const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
             params: { term: searchTerm },
           });
           setResults(response.data);
