@@ -50,7 +50,7 @@ function Navbar() {
     })} className="nav-link" >
         Home
       </NavLink>
-      <NavLink to="/catalog" style={({ isActive }) => ({
+      <NavLink to="/catelog" style={({ isActive }) => ({
       borderBottom: isActive ? '2px solid black' : 'none',
     })} className="nav-link" >
         Catalog
