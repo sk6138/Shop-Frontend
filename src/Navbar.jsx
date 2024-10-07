@@ -1,12 +1,12 @@
 import React,{useState} from 'react';
 import { NavLink} from 'react-router-dom';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./Navbar.css"; // Assuming you have a CSS file for styling
 import LatestProduct from './LatestProduct';
 function Navbar() {
-
+   const navigate = useNavigate();
     const [isSearchActive, setSearchActive] = useState(false);
     const [isButtonHovered, setButtonHovered] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
@@ -29,7 +29,7 @@ function Navbar() {
             params: { term: searchTerm },
           });
           setResults(response.data);
-          <LatestProduct data={results}/>
+          navigate('/latest', { state: { results } });
         } catch (error) {
           console.error('Error fetching data:', error);
         }
