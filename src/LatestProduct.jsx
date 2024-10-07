@@ -5,7 +5,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 export default function LatestProduct(props) {
-  const data = props.data;
+  const result = props.data;
+  console.log(result);
   return (
     <div>
 
@@ -14,7 +15,7 @@ export default function LatestProduct(props) {
       <h3>Featured Books</h3>
       <div className="Feature-card">
       {/*  */}
-      {data.map((item, index) => (
+      {result.map((item, index) => (
         <div className="carddiv">
 
                 <ProductCard  detail={item} title="notebooks"/>
