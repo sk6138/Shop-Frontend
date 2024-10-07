@@ -28,6 +28,7 @@ function Navbar() {
           const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
             params: { term: searchTerm },
           });
+          console.log(response.data);
           setResults(response.data);
           navigate('/latest', { state: { results } });
         } catch (error) {
