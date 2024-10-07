@@ -87,7 +87,7 @@ export default function Cart() {
               // Call onRemove (optional) to update the cart in the parent component
               Swal.fire({
                 title: 'Success!',
-                text: `${product.productName} has been removed from your cart!`,
+                text: `Item has been removed from your cart!`,
                 icon: 'success',
                 showConfirmButton: false,
                 timer: 4000, // Auto-close after 2 seconds
