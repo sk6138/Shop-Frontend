@@ -29,7 +29,7 @@ export default function Catelog() {
           </Link>
         </div>
         <div className="product-item">
-          <Link to="/study-accessories">
+          <Link to="/accesaries">
             <div className="product-icon">
               ✏️
             </div>
