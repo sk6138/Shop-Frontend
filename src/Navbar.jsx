@@ -96,8 +96,6 @@ function Navbar() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search....."
-          
-            autoFocus
           />
   
            <button
