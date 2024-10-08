@@ -42,29 +42,48 @@
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 const LatestProduct = () => {
   const location = useLocation();
   
   // Retrieve the passed results
-  const results = location.state?.results || [];
+  const result = location.state?.results || [];
 
   return (
+    <>
     <div>
+      <Navbar/>
       <h2>Search Results</h2>
-      <ul>
-        {results.length > 0 ? (
-          results.map((result, index) => (
-            <li key={index}>
-              <p><strong>{result.name}</strong></p>
-              <p>{result.description}</p>
-            </li>
-          ))
+      
+        {result.length > 0 ? (
+            <div className="cardContainer">
+            <h3>Featured Books</h3>
+            <div className="Feature-card">
+            {/*  */}
+            {data.map((item, index) => (
+              <div className="carddiv">
+      
+                      <ProductCard  detail={item} title="books"/>
+                      </div>
+                  ))}
+                 
+                 
+                 
+            </div>
+            
+            
+            </div>
         ) : (
           <p>No results found</p>
         )}
-      </ul>
+      
+
+      <Footer/>
     </div>
+    </>
+    
   );
 };
 
