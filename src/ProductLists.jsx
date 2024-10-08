@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 
 export default function ProductLists(props) {
 const location = useLocation();
-const products = location.state?.list;
+const products = location.state?.list || [];
 console.log(products);
   return (
     <div>
