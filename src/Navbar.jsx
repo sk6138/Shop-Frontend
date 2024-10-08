@@ -27,6 +27,10 @@ function Navbar() {
     };
 
     const handleSearchSubmits = async () => {
+      if (searchTerm==undefined) {
+        console.error('Search term is empty');
+        return;
+      }
       try {
         console.log(searchTerm);
         const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
