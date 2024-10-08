@@ -14,23 +14,7 @@ function Navbar() {
     const [searchTerm, setSearchTerm] = useState();  // Default search term
     const [results, setResults] = useState([]);
     
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(`https://shop-backend-production-d74a.up.railway.app/api/search`, {
-            params: {
-              term: searchTerm,  // Pass the search term as a query parameter
-            },
-          });
-          setResults(response.data);  // Assuming the data is in response.data
-          navigate('/latest', { state: { results } });
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-  
-      fetchData();
-    }, [searchTerm]);
+    
     
 
     const handleSearchClick = (event) => {
@@ -42,26 +26,22 @@ function Navbar() {
       setSearchActive(false);
     };
 
-    // const handleSearchSubmit = async () => {
-    //     let url = `https://shop-backend-production-d74a.up.railway.app/api/search?term=${searchTerm}`;
+    const handleSearchSubmit = async () => {
+      try {
+        console.log(searchTerm);
+        const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
+          params: { term: searchTerm },
+        });
         
-    //     try {
-    //       console.log(searchTerm);
-    //       const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
-    //         params: { term: searchTerm },
-    //       });
-    //       // const response = await axios.get(url);
-    //       // console.log(response.data);
-    //       setData(response.data);
-    //       const result=data;
-         
-    //       console.log(result);
-    //       navigate('/latest', { state: { result } });
-    //     } catch (error) {
-    //       console.error('Error fetching data:', error);
-    //     }
+        console.log(response.data); // Check if you are getting the correct response
+        const results = response.data;
         
-    //   };
+        // Directly pass the results to navigate
+        navigate('/latest', { state: { results } });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
       const handleButtonMouseEnter = () => {
         setButtonHovered(true);
@@ -122,7 +102,7 @@ function Navbar() {
   
            <button
               className="search-button"
-              onClick={handleSearchSubmit}
+              // onClick={handleSearchSubmit}
               onMouseEnter={handleButtonMouseEnter}
               onMouseLeave={handleButtonMouseLeave}
             >
