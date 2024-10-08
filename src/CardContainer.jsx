@@ -33,7 +33,7 @@ export default function CardContainer(props) {
     console.log(data);
 
     const goto =() =>{
-       navigate('/productlists',{ state: { list: items}  });
+       navigate('/books');
     }
    
    
