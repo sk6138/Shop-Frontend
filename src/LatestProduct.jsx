@@ -7,9 +7,9 @@ import { useLocation } from 'react-router-dom';
 
 export default function LatestProduct() {
   const location = useLocation();
-  const results = location.state?.result || []; 
+  const result = location.state?.results || []; 
   console.log("latest product");
-  console.log(results);
+  console.log(result);
   return (
     <div>
 
@@ -18,7 +18,7 @@ export default function LatestProduct() {
       <h3>Featured Books</h3>
       <div className="Feature-card">
       {/*  */}
-      {results.map((item, index) => (
+      {result.map((item, index) => (
         <div className="carddiv">
 
                 <ProductCard  detail={item} title="notebooks"/>

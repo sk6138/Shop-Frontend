@@ -8,8 +8,32 @@ function Navbar() {
    const navigate = useNavigate();
     const [isSearchActive, setSearchActive] = useState(false);
     const [isButtonHovered, setButtonHovered] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('');
     const [data, setData] = useState([]);
+
+
+    const [searchTerm, setSearchTerm] = useState();  // Default search term
+    const [results, setResults] = useState([]);
+    
+    useEffect(() => {
+      const handleSearchSubmit = async () => {
+        try {
+          const response = await axios.get(`https://shop-backend-production-d74a.up.railway.app/api/search`, {
+            params: {
+              term: searchTerm,  // Pass the search term as a query parameter
+            },
+          });
+          setResults(response.data);  // Assuming the data is in response.data
+          
+         
+          console.log(results);
+          navigate('/latest', { state: { results } });
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+    }, [searchTerm]);
     
 
     const handleSearchClick = (event) => {
