@@ -11,7 +11,7 @@ function Navbar() {
     const [data, setData] = useState([]);
 
 
-    const [searchTerm, setSearchTerm] = useState();  // Default search term
+    const [searchTerm, setSearchTerm] = useState('');  // Default search term
     const [results, setResults] = useState([]);
     
     
@@ -38,7 +38,8 @@ function Navbar() {
         });
         
         console.log(response.data); // Check if you are getting the correct response
-        const results = response.data;
+        setResults(response.data);
+       
         
         // Directly pass the results to navigate
         navigate('/latest', { state: { results } });
@@ -156,12 +157,14 @@ function Navbar() {
     </nav>
    ):(
     <div className="big-search-container ">
-    <input
-      type="text"
-      className="big-search-bar"
-      placeholder="Search..."
-      autoFocus
-    />
+          <input
+        type="text"
+        className="big-search-bar"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        autoFocus
+      />
 
      <button
         className="search-button"
