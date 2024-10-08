@@ -102,7 +102,7 @@ function Navbar() {
   
            <button
               className="search-button"
-              // onClick={handleSearchSubmit}
+               onClick={handleSearchSubmits}
               onMouseEnter={handleButtonMouseEnter}
               onMouseLeave={handleButtonMouseLeave}
             >
@@ -154,13 +154,13 @@ function Navbar() {
     <input
       type="text"
       className="big-search-bar"
-      placeholder="Search for anything..."
+      placeholder="Search..."
       autoFocus
     />
 
      <button
         className="search-button"
-        onClick={handleSearchSubmit}
+         onClick={handleSearchSubmits}
         onMouseEnter={handleButtonMouseEnter}
         onMouseLeave={handleButtonMouseLeave}
       >
