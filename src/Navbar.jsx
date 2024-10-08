@@ -23,9 +23,10 @@ function Navbar() {
 
     const handleSearchSubmit = async () => {
         let url = `https://shop-backend-production-d74a.up.railway.app/api/search?term=${searchTerm}`;
-        console.log(searchTerm);
+        
         try {
-          const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search?term=', {
+          console.log(searchTerm);
+          const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
             params: { term: searchTerm },
           });
           // const response = await axios.get(url);
