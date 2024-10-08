@@ -34,7 +34,7 @@ export default function App() {
   <Route path="/accesaries/:id" element={<BookDetails title="accesaries" />} />
   <Route path="/notebooks/:id" element={<BookDetails title="notebooks" />} />
   <Route path='/search' element={<Search/>}/>
-  <Route path='/productlists' element={<ProductLists/>}/>
+  {/* <Route path='/productlists' element={<ProductLists/>}/> */}
   <Route path='/latest' element={<LatestProduct/>}/>
   <Route path='/contact' element={<Contact/>}/>
   <Route path='/cart' element={<Cart/>}/>

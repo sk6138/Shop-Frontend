@@ -14,7 +14,9 @@ export default function CardContainer(props) {
   
     useEffect(() => {
       // Call the API when the component mounts
+     // production use
       axios.get('https://shop-backend-production-d74a.up.railway.app/api/notebooks/all')
+     
         .then(response => {
           setData(response.data);
           setLoading(false);
@@ -23,6 +25,7 @@ export default function CardContainer(props) {
           console.error('Error fetching the API', error);
           setLoading(false);
         });
+       
     }, []); // The empty dependency array ensures this runs once on component mount
   
     if (loading) {
@@ -34,7 +37,7 @@ export default function CardContainer(props) {
     console.log(data);
 
     const goto =() =>{
-       navigate('/productlists',{ state: { list: items}  });
+       navigate('/notebooks');
     }
    
 
