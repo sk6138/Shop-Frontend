@@ -90,31 +90,32 @@ function Navbar() {
         <i className="bi bi-youtube"></i>
 
         </span>  ) :
-        (
-          <div className="big-search-container container">
-          <input
-            type="text"
-            className="big-search-bar"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search....."
-          />
+          (
+        //   <div className="big-search-container container">
+        //   <input
+        //     type="text"
+        //     className="big-search-bar"
+        //     value={searchTerm}
+        //     onChange={(e) => setSearchTerm(e.target.value)}
+        //     placeholder="Search....."
+        //   />
   
-           <button
-              className="search-button"
-               onClick={handleSearchSubmits}
-              onMouseEnter={handleButtonMouseEnter}
-              onMouseLeave={handleButtonMouseLeave}
-            >
-              {isButtonHovered ? <i className="bi bi-search searching"></i> : "Search"}
-            </button> 
-          <button className="search-button" onClick={handleSearchSubmits}>
-              Search
-            </button>
-          <button className="close-search" onClick={handleSearchClose}>
-            &times;
-          </button>
-        </div>
+        //    <button
+        //       className="search-button"
+        //       //  onClick={handleSearchSubmits}
+        //       onMouseEnter={handleButtonMouseEnter}
+        //       onMouseLeave={handleButtonMouseLeave}
+        //     >
+        //       {isButtonHovered ? <i className="bi bi-search searching"></i> : "Search"}
+        //     </button> 
+        //   <button className="search-button" onClick={handleSearchSubmits}>
+        //       Search
+        //     </button>
+        //   <button className="close-search" onClick={handleSearchClose}>
+        //     &times;
+        //   </button>
+        // </div>
+        <p>hii</p>
          )}
         
       </div>
@@ -160,7 +161,7 @@ function Navbar() {
 
      <button
         className="search-button"
-         onClick={handleSearchSubmits}
+          onClick={handleSearchSubmits}
         onMouseEnter={handleButtonMouseEnter}
         onMouseLeave={handleButtonMouseLeave}
       >
