@@ -26,7 +26,7 @@ function Navbar() {
       setSearchActive(false);
     };
 
-    const handleSearchSubmit = async () => {
+    const handleSearchSubmits = async () => {
       try {
         console.log(searchTerm);
         const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
@@ -108,7 +108,7 @@ function Navbar() {
             >
               {isButtonHovered ? <i className="bi bi-search searching"></i> : "Search"}
             </button> 
-          <button className="search-button" onClick={handleSearchSubmit}>
+          <button className="search-button" onClick={handleSearchSubmits}>
               Search
             </button>
           <button className="close-search" onClick={handleSearchClose}>
