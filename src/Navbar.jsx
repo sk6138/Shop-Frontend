@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { NavLink} from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -45,26 +45,26 @@ function Navbar() {
       setSearchActive(false);
     };
 
-    const handleSearchSubmit = async () => {
-        let url = `https://shop-backend-production-d74a.up.railway.app/api/search?term=${searchTerm}`;
+    // const handleSearchSubmit = async () => {
+    //     let url = `https://shop-backend-production-d74a.up.railway.app/api/search?term=${searchTerm}`;
         
-        try {
-          console.log(searchTerm);
-          const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
-            params: { term: searchTerm },
-          });
-          // const response = await axios.get(url);
-          // console.log(response.data);
-          setData(response.data);
-          const result=data;
+    //     try {
+    //       console.log(searchTerm);
+    //       const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
+    //         params: { term: searchTerm },
+    //       });
+    //       // const response = await axios.get(url);
+    //       // console.log(response.data);
+    //       setData(response.data);
+    //       const result=data;
          
-          console.log(result);
-          navigate('/latest', { state: { result } });
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
+    //       console.log(result);
+    //       navigate('/latest', { state: { result } });
+    //     } catch (error) {
+    //       console.error('Error fetching data:', error);
+    //     }
         
-      };
+    //   };
 
       const handleButtonMouseEnter = () => {
         setButtonHovered(true);
