@@ -1,6 +1,8 @@
 .footer-container {
     
-    
+    position: fixed; /* Sticks the footer at the bottom */
+    left: 0;
+    bottom: 0;
     text-align: center;
     font-weight: 400;
     color: gray;
