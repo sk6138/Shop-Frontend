@@ -15,7 +15,7 @@ function Navbar() {
     const [results, setResults] = useState([]);
     
     useEffect(() => {
-      const handleSearchSubmit = async () => {
+      const fetchData = async () => {
         try {
           const response = await axios.get(`https://shop-backend-production-d74a.up.railway.app/api/search`, {
             params: {
@@ -23,9 +23,6 @@ function Navbar() {
             },
           });
           setResults(response.data);  // Assuming the data is in response.data
-          
-         
-          console.log(results);
           navigate('/latest', { state: { results } });
         } catch (error) {
           console.error('Error fetching data:', error);
