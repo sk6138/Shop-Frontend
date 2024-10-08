@@ -63,7 +63,7 @@ const LatestProduct = () => {
             <h3>Featured Books</h3>
             <div className="Feature-card">
             {/*  */}
-            {data.map((item, index) => (
+            {result.map((item, index) => (
               <div className="carddiv">
       
                       <ProductCard  detail={item} title="books"/>
