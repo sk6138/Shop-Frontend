@@ -49,7 +49,7 @@ const LatestProduct = () => {
   const location = useLocation();
   
   // Retrieve the passed results
-  const result = location.state?.results || [];
+  const result = location.state?.searchList || [];
   console.log(result);
 
   return (

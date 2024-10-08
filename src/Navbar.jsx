@@ -42,7 +42,7 @@ function Navbar() {
        
         
         // Directly pass the results to navigate
-        navigate('/latest', { state: { results } });
+        navigate('/latest', { state: {searchList : (response.data) } });
       } catch (error) {
         console.error('Error fetching data:', error);
       }
