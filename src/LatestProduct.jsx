@@ -50,6 +50,7 @@ const LatestProduct = () => {
   
   // Retrieve the passed results
   const result = location.state?.results || [];
+  console.log(result);
 
   return (
     <>
