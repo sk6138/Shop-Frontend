@@ -7,7 +7,8 @@ import { useLocation } from 'react-router-dom';
 
 export default function LatestProduct() {
   const location = useLocation();
-  const results = location.state?.data || []; 
+  const results = location.state?.result || []; 
+  console.log("latest product");
   console.log(results);
   return (
     <div>

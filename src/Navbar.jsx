@@ -27,10 +27,12 @@ function Navbar() {
           const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
             params: { term: searchTerm },
           });
-          console.log(response.data);
+          // console.log(response.data);
           setData(response.data);
-          console.log(data);
-          navigate('/latest', { state: { data } });
+          const result=data;
+         
+          console.log(result);
+          navigate('/latest', { state: { result } });
         } catch (error) {
           console.error('Error fetching data:', error);
         }
