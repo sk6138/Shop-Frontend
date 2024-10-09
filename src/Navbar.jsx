@@ -120,7 +120,7 @@ function Navbar() {
         //     &times;
         //   </button>
         // </div>
-        <p>hii</p>
+        <p></p>
          )}
         
       </div>

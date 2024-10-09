@@ -1,4 +1,5 @@
-.warning-container {
+
+/* .warning-container {
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -7,15 +8,15 @@
   }
   
   .warning-container.true {
-    background-color: #ffcccb; /* Light red background */
-    color: #c62828; /* Dark red text */
-    border: 2px solid #c62828; /* Dark red border */
+    background-color: #ffcccb;
+    color: #c62828; 
+    border: 2px solid #c62828; 
   }
   
   .warning-container.false {
-    background-color: #cce5ff; /* Light blue background */
-    color: #004085; /* Dark blue text */
-    border: 2px solid #004085; /* Dark blue border */
+    background-color: #cce5ff; 
+    color: #004085; 
+    border: 2px solid #004085; 
   }
   
   .warning-title {
@@ -28,4 +29,55 @@
     font-size: 1rem;
     margin: 0;
   }
+    */
+
+    .warning-container {
+      padding: 5% 2%; /* Adjusted for responsive padding */
+      border-radius: 8px;
+      text-align: center;
+      margin: 2% auto; /* Centering and responsive margin */
+      transition: all 0.3s ease;
+      max-width: 600px; /* Limiting max width for larger screens */
+  }
+  
+  .warning-container.true {
+      background-color: #ffcccb; /* Light red background */
+      color: #c62828; /* Dark red text */
+      border: 2px solid #c62828; /* Dark red border */
+  }
+  
+  .warning-container.false {
+      background-color: #cce5ff; /* Light blue background */
+      color: #004085; /* Dark blue text */
+      border: 2px solid #004085; /* Dark blue border */
+  }
+  
+  .warning-title {
+      font-size: 2.5vw; /* Responsive font size */
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+  
+  .warning-message {
+      font-size: 1.5vw; /* Responsive font size */
+      margin: 0;
+  }
+  
+  /* Media Queries for additional adjustments */
+  @media (max-width: 768px) {
+      .warning-title {
+          font-size: 4vw; /* Larger font size for smaller screens */
+      }
+      
+      .warning-message {
+          font-size: 3vw; /* Larger font size for smaller screens */
+      }
+  }
+  
+  @media (max-width: 480px) {
+      .warning-container {
+          padding: 10%; /* More padding for very small screens */
+      }
+  }
+  
   

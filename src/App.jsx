@@ -15,6 +15,7 @@ import Catelog from './Catelog';
 import Books from './Books';
 import Notebooks from './Notebooks';
 import Accesaries from './Accesaries';
+import PayUForm from './PayUForm';
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
   <Route path='/cancel' element={<Cancel/>}/>
   <Route path='/success' element={<Success/>}/>
   <Route path='/catelog' element={<Catelog/>}/>
+  <Route path='/payment' element={<PayUForm/>}/>
   <Route path='/books' element={<Books title="books"/>}/>
   <Route path='/notebooks' element={<Notebooks />}/>
   <Route path='/accesaries' element={<Accesaries />}/>
