@@ -21,7 +21,8 @@
     "react-router-dom": "^6.26.1",
     "react-sahil": "file:",
     "react-toastify": "^10.0.5",
-    "sweetalert2": "^11.14.1"
+    "sweetalert2": "^11.14.1",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
