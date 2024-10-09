@@ -116,6 +116,7 @@ export default function BookDetails(props) {
   };
 
   const handleCheckout = async () => {
+    navigate('/payment', { state: { cart } });
     if (isAuthenticated) {
    // Initialize Stripe
    const total = (product.price*quantity);
