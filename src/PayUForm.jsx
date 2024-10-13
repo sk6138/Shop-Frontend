@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
+import { useLocation } from 'react-router-dom';
 
 const PayUForm = () => {
+  const location = useLocation();
+  const  cart  = location.state || { cart };
+  crossOriginIsolated.log(cart);
   const [paymentData, setPaymentData] = useState(null);
   const [payuUrl, setPayuUrl] = useState(null);
   const txnid = `TXN${uuidv4()}`;

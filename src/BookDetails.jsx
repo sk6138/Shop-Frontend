@@ -103,6 +103,7 @@ export default function BookDetails(props) {
 
         
       } catch (e) {
+        
         console.log(e);
       }
      
@@ -116,29 +117,30 @@ export default function BookDetails(props) {
   };
 
   const handleCheckout = async () => {
-    navigate('/payment', { state: { cart } });
+   
     if (isAuthenticated) {
    // Initialize Stripe
-   const total = (product.price*quantity);
-   if(total>0){
+   navigate('/payment', { state: { cart } });
+  //  const total = (product.price*quantity);
+  //  if(total>0){
       
    const stripe = await stripePromise;
 
    // Call backend to create a Checkout session
-   const { data } = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/checkout/create-session', {
-     price: total, // Send the price or product info to the backend
-     name :(product.name),
-     description:(product.description)
-    });
+  //  const { data } = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/checkout/create-session', {
+  //    price: total, // Send the price or product info to the backend
+  //    name :(product.name),
+  //    description:(product.description)
+  //   });
     // Redirect to the Stripe-hosted payment page (session URL is returned from backend)
-    const result = await stripe.redirectToCheckout({
-      sessionId: data.id, // The session ID returned from backend
-    });
+    // const result = await stripe.redirectToCheckout({
+    //   sessionId: data.id, // The session ID returned from backend
+    // });
 
-    if (result.error) {
-      console.error(result.error.message);
-    }
-    }
+    // if (result.error) {
+    //   console.error(result.error.message);
+    // }
+    // }
   
     }
     else{
