@@ -128,7 +128,7 @@ export default function BookDetails(props) {
       const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/payu/create-payment', {
         txnId: txnid,   // Unique transaction ID (generate this dynamically)
         amount: total,       // Amount in INR
-        productInfo: (product.name)(product.description),
+        productInfo: product.name,
         firstName: 'John',
         email: 'john@example.com',
         phone: '9876543210'
