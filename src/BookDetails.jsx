@@ -122,7 +122,7 @@ export default function BookDetails(props) {
     navigate('/cart', { state: { cart } }); // Send the array of objects (cart) to CartPage
   };
 
-  const handleCheckout = () =>{
+ 
     const createPayment = async () => {
       const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/payu/create-payment', {
         txnId: txnid,   // Unique transaction ID (generate this dynamically)
@@ -139,7 +139,7 @@ export default function BookDetails(props) {
       const payuResponse = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/payu/payu-url');
       setPayuUrl(payuResponse.data);
     };
-  }
+  
 
   const submitPaymentForm = () => {
     if (!paymentData || !payuUrl) return null;
@@ -233,7 +233,7 @@ export default function BookDetails(props) {
         onClick={handleGoToCart}>
           Go to Cart
           </button>
-        <button className={styles["product-page__button--buy"]} onClick={handleCheckout}>
+        <button className={styles["product-page__button--buy"]} onClick={createPayment}>
             Buy Now
         </button>
 
