@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from 'sweetalert2';
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 
@@ -33,6 +35,10 @@ export default function BookDetails(props) {
   const [cart, setCart] = useState([]); 
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
+  const [paymentData, setPaymentData] = useState(null);
+  const [payuUrl, setPayuUrl] = useState(null);
+  const txnid = `TXN${uuidv4()}`;
+  console.log(txnid);
 
 
 
@@ -116,36 +122,74 @@ export default function BookDetails(props) {
     navigate('/cart', { state: { cart } }); // Send the array of objects (cart) to CartPage
   };
 
-  const handleCheckout = async () => {
-   
-    if (isAuthenticated) {
-   // Initialize Stripe
-   navigate('/payment', { state: { cart } });
-  //  const total = (product.price*quantity);
-  //  if(total>0){
-      
-   const stripe = await stripePromise;
-
-   // Call backend to create a Checkout session
-  //  const { data } = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/checkout/create-session', {
-  //    price: total, // Send the price or product info to the backend
-  //    name :(product.name),
-  //    description:(product.description)
-  //   });
-    // Redirect to the Stripe-hosted payment page (session URL is returned from backend)
-    // const result = await stripe.redirectToCheckout({
-    //   sessionId: data.id, // The session ID returned from backend
-    // });
-
-    // if (result.error) {
-    //   console.error(result.error.message);
-    // }
-    // }
+  const handleCheckout = () =>{
+    const createPayment = async () => {
+      const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/payu/create-payment', {
+        txnId: txnid,   // Unique transaction ID (generate this dynamically)
+        amount: '500',       // Amount in INR
+        productInfo: 'Test Product',
+        firstName: 'John',
+        email: 'john@example.com',
+        phone: '9876543210'
+      });
   
-    }
-    else{
-      navigate('/profile');
-    }
+      setPaymentData(response.data);
+  
+      // Get the PayU URL
+      const payuResponse = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/payu/payu-url');
+      setPayuUrl(payuResponse.data);
+    };
+  }
+
+  const submitPaymentForm = () => {
+    if (!paymentData || !payuUrl) return null;
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = payuUrl;
+
+    Object.keys(paymentData).forEach(key => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = paymentData[key];
+      form.appendChild(input);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+  };
+
+  // const handleCheckout =  () => {
+   
+  //   if (isAuthenticated) {
+  //  // Initialize Stripe
+   
+  // //  const total = (product.price*quantity);
+  // //  if(total>0){
+      
+  // //  const stripe = await stripePromise;
+
+  //  // Call backend to create a Checkout session
+  // //  const { data } = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/checkout/create-session', {
+  // //    price: total, // Send the price or product info to the backend
+  // //    name :(product.name),
+  // //    description:(product.description)
+  // //   });
+  //   // Redirect to the Stripe-hosted payment page (session URL is returned from backend)
+  //   // const result = await stripe.redirectToCheckout({
+  //   //   sessionId: data.id, // The session ID returned from backend
+  //   // });
+
+  //   // if (result.error) {
+  //   //   console.error(result.error.message);
+  //   // }
+  //   // }
+  
+  //   }
+  //   else{
+  //     navigate('/profile');
+  //   }
 
    
       
@@ -153,7 +197,8 @@ export default function BookDetails(props) {
     
 
     
-  };
+  
+
   
    
  
@@ -191,6 +236,10 @@ export default function BookDetails(props) {
         <button className={styles["product-page__button--buy"]} onClick={handleCheckout}>
             Buy Now
         </button>
+
+        {paymentData && (
+        <button className={styles["product-page__button--buy"]} onClick={submitPaymentForm}>Proceed to PayU</button>
+      )}
         
     </div>
 
