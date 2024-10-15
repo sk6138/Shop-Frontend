@@ -141,8 +141,12 @@ export default function BookDetails(props) {
       setPayuUrl(payuResponse.data);
 
 
+      
+    };
+  
 
-      if (!paymentData || !payuUrl) return null;
+  const submitPaymentForm = () => {
+    if (!paymentData || !payuUrl) return null;
 
     const form = document.createElement('form');
     form.method = 'POST';
@@ -158,27 +162,7 @@ export default function BookDetails(props) {
 
     document.body.appendChild(form);
     form.submit();
-    };
-  
-
-  // const submitPaymentForm = () => {
-  //   if (!paymentData || !payuUrl) return null;
-
-  //   const form = document.createElement('form');
-  //   form.method = 'POST';
-  //   form.action = payuUrl;
-
-  //   Object.keys(paymentData).forEach(key => {
-  //     const input = document.createElement('input');
-  //     input.type = 'hidden';
-  //     input.name = key;
-  //     input.value = paymentData[key];
-  //     form.appendChild(input);
-  //   });
-
-  //   document.body.appendChild(form);
-  //   form.submit();
-  // };
+  };
 
   // const handleCheckout =  () => {
    
@@ -257,9 +241,9 @@ export default function BookDetails(props) {
             Buy Now
         </button>
 
-        {/* {paymentData && (
+        {paymentData && (
         <button className={styles["product-page__button--buy"]} onClick={submitPaymentForm}>Proceed to PayU</button>
-      )} */}
+      )}
         
     </div>
 
