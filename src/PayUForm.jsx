@@ -1,61 +1,59 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
-import { useLocation } from 'react-router-dom';
+// import React, { useState } from 'react';
+// import axios from 'axios';
+// import { v4 as uuidv4 } from 'uuid';
 
-const PayUForm = () => {
-  const location = useLocation();
-  const  cart  = location.state || { cart };
-  crossOriginIsolated.log(cart);
-  const [paymentData, setPaymentData] = useState(null);
-  const [payuUrl, setPayuUrl] = useState(null);
-  const txnid = `TXN${uuidv4()}`;
-  console.log(txnid);
 
-  const createPayment = async () => {
-    const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/payu/create-payment', {
-      txnId: txnid,   // Unique transaction ID (generate this dynamically)
-      amount: '500',       // Amount in INR
-      productInfo: 'Test Product',
-      firstName: 'John',
-      email: 'john@example.com',
-      phone: '9876543210'
-    });
+// const PayUForm = () => {
+  
+//   const [paymentData, setPaymentData] = useState(null);
+//   const [payuUrl, setPayuUrl] = useState(null);
+//   const txnid = `TXN${uuidv4()}`;
+//   console.log(txnid);
 
-    setPaymentData(response.data);
+//   const createPayment = async () => {
+//     const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/payu/create-payment', {
+//       txnId: txnid,   // Unique transaction ID (generate this dynamically)
+//       amount: '500',       // Amount in INR
+//       productInfo: 'Test Product',
+//       firstName: 'John',
+//       email: 'john@example.com',
+//       phone: '9876543210'
+//     });
 
-    // Get the PayU URL
-    const payuResponse = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/payu/payu-url');
-    setPayuUrl(payuResponse.data);
-  };
+//     setPaymentData(response.data);
 
-  const submitPaymentForm = () => {
-    if (!paymentData || !payuUrl) return null;
+//     // Get the PayU URL
+//     const payuResponse = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/payu/payu-url');
+//     setPayuUrl(payuResponse.data);
+//   };
 
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = payuUrl;
+//   const submitPaymentForm = () => {
+//     if (!paymentData || !payuUrl) return null;
 
-    Object.keys(paymentData).forEach(key => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = paymentData[key];
-      form.appendChild(input);
-    });
+//     const form = document.createElement('form');
+//     form.method = 'POST';
+//     form.action = payuUrl;
 
-    document.body.appendChild(form);
-    form.submit();
-  };
+//     Object.keys(paymentData).forEach(key => {
+//       const input = document.createElement('input');
+//       input.type = 'hidden';
+//       input.name = key;
+//       input.value = paymentData[key];
+//       form.appendChild(input);
+//     });
 
-  return (
-    <div>
-      <button onClick={createPayment}>Create Payment</button>
-      {paymentData && (
-        <button onClick={submitPaymentForm}>Proceed to PayU</button>
-      )}
-    </div>
-  );
-};
+//     document.body.appendChild(form);
+//     form.submit();
+//   };
 
-export default PayUForm;
+//   return (
+//     <div>
+//       <button onClick={createPayment}>Create Payment</button>
+//       {paymentData && (
+//         <button onClick={submitPaymentForm}>Proceed to PayU</button>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default PayUForm;

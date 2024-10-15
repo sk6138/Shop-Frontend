@@ -28,7 +28,7 @@ export default function App() {
   <Route path='/cancel' element={<Cancel/>}/>
   <Route path='/success' element={<Success/>}/>
   <Route path='/catelog' element={<Catelog/>}/>
-  <Route path='/payment' element={<PayUForm/>}/>
+  {/* <Route path='/payment' element={<PayUForm/>}/> */}
   <Route path='/books' element={<Books title="books"/>}/>
   <Route path='/notebooks' element={<Notebooks />}/>
   <Route path='/accesaries' element={<Accesaries />}/>

@@ -42,7 +42,7 @@ export default function BookDetails(props) {
 
 
 
-  const stripePromise = loadStripe('pk_test_51Q3BhqP6fYAkdHlV6bxC8SnaW9ML3ccPLGmWOwJVLTvVDIgDOuGw7ALlfI1d1k2RprfSBBY34MZbeWFSgWuRxjry00ABINQTVf');
+  // const stripePromise = loadStripe('pk_test_51Q3BhqP6fYAkdHlV6bxC8SnaW9ML3ccPLGmWOwJVLTvVDIgDOuGw7ALlfI1d1k2RprfSBBY34MZbeWFSgWuRxjry00ABINQTVf');
 
   
     useEffect(() => {
@@ -124,10 +124,11 @@ export default function BookDetails(props) {
 
  
     const createPayment = async () => {
+      const total = (product.price*quantity);
       const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/payu/create-payment', {
         txnId: txnid,   // Unique transaction ID (generate this dynamically)
-        amount: '500',       // Amount in INR
-        productInfo: 'Test Product',
+        amount: total,       // Amount in INR
+        productInfo: (product.name)(product.description),
         firstName: 'John',
         email: 'john@example.com',
         phone: '9876543210'
@@ -138,11 +139,10 @@ export default function BookDetails(props) {
       // Get the PayU URL
       const payuResponse = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/payu/payu-url');
       setPayuUrl(payuResponse.data);
-    };
-  
 
-  const submitPaymentForm = () => {
-    if (!paymentData || !payuUrl) return null;
+
+
+      if (!paymentData || !payuUrl) return null;
 
     const form = document.createElement('form');
     form.method = 'POST';
@@ -158,7 +158,27 @@ export default function BookDetails(props) {
 
     document.body.appendChild(form);
     form.submit();
-  };
+    };
+  
+
+  // const submitPaymentForm = () => {
+  //   if (!paymentData || !payuUrl) return null;
+
+  //   const form = document.createElement('form');
+  //   form.method = 'POST';
+  //   form.action = payuUrl;
+
+  //   Object.keys(paymentData).forEach(key => {
+  //     const input = document.createElement('input');
+  //     input.type = 'hidden';
+  //     input.name = key;
+  //     input.value = paymentData[key];
+  //     form.appendChild(input);
+  //   });
+
+  //   document.body.appendChild(form);
+  //   form.submit();
+  // };
 
   // const handleCheckout =  () => {
    
@@ -237,9 +257,9 @@ export default function BookDetails(props) {
             Buy Now
         </button>
 
-        {paymentData && (
+        {/* {paymentData && (
         <button className={styles["product-page__button--buy"]} onClick={submitPaymentForm}>Proceed to PayU</button>
-      )}
+      )} */}
         
     </div>
 
