@@ -16,14 +16,13 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import { motion } from 'framer-motion';
 
-const LoginButton = (props) => {
+const LoginButton = () => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(props.title);
+  
   const { logout } = useAuth0();
-  const handleLogin = () => setIsLoggedIn(true);
-  const handleLogout = () => setIsLoggedIn(false);
   const navigate = useNavigate();
   const {
+    user,
     isAuthenticated,
     isLoading,
     loginWithRedirect,
@@ -75,25 +74,26 @@ const LoginButton = (props) => {
 
   <div className="login-page">
   <div className="login-content">
-    {isLoggedIn ? (
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="login-box"
-      >
-        <h1>Goodbye!</h1>
-        <p>We hope to see you soon.</p>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="login-button"
-          type="button"
-          onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-        >
-          Log Out
-        </motion.button>
-      </motion.div>
+    {isAuthenticated ? (
+
+          <><img src={user.picture} alt={user.name} /><h2>{user.name}</h2><p>{user.email}</p><motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="login-box"
+          >
+            <h1>Goodbye!</h1>
+            <p>We hope to see you soon.</p>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="login-button"
+              type="button"
+              onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
+            >
+              Log Out
+            </motion.button>
+          </motion.div></>
     ) : (
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
