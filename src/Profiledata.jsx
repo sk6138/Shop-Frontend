@@ -16,7 +16,7 @@ export default function Profiledata() {
 
      // Send OTP request to the backend for phone
   const sendPhoneOtp = () => {
-    axios.post('https://shop-back-dste4jkuw-sahils-projects-91795441.vercel.app/api/sendPhoneOtp', { phone })
+    axios.post('https://shop-back-end.vercel.app/api/sendPhoneOtp', { phone })
       .then(response => {
         alert('OTP sent to phone!');
       }).catch(error => {
@@ -26,7 +26,7 @@ export default function Profiledata() {
 
   // Verify OTP for phone
   const verifyPhoneOtp = () => {
-    axios.post('https://shop-back-dste4jkuw-sahils-projects-91795441.vercel.app/api/verifyPhoneOtp', { phone, otp: phoneOtp })
+    axios.post('https://shop-back-end.vercel.app/api/verifyPhoneOtp', { phone, otp: phoneOtp })
       .then(response => {
         if (response.data.success) {
           setIsPhoneVerified(true);
@@ -41,7 +41,7 @@ export default function Profiledata() {
 
   // Send OTP request to the backend for email
   const sendEmailOtp = () => {
-    axios.post('https://shop-back-dste4jkuw-sahils-projects-91795441.vercel.app/api/sendEmailOtp', { email })
+    axios.post('https://shop-back-end.vercel.app/api/sendEmailOtp', { email })
       .then(response => {
         alert('OTP sent to email!');
       }).catch(error => {
@@ -51,7 +51,7 @@ export default function Profiledata() {
 
   // Verify OTP for email
   const verifyEmailOtp = () => {
-    axios.post('https://shop-back-dste4jkuw-sahils-projects-91795441.vercel.app/api/verifyEmailOtp', { email, otp: emailOtp })
+    axios.post('https://shop-back-end.vercel.app/api/verifyEmailOtp', { email, otp: emailOtp })
       .then(response => {
         if (response.data.success) {
           setIsEmailVerified(true);
