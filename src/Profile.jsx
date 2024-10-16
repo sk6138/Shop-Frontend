@@ -2,7 +2,6 @@ import {React,useContext} from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Navbar from "./Navbar";
 import LoginButton from "./LoginButton";
-import { GlobalContext } from './GlobalContext'; 
 import Footer from "./Footer";
 
 const Profile = (props) => {
