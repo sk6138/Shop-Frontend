@@ -82,7 +82,7 @@ export default function Profiledata() {
   };
   return (
     <div>
-      <div className="container">
+      <div className="containe">
       <h1>Profile Information</h1>
 
       <div className="form-group">
