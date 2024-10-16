@@ -4,7 +4,7 @@ import './Profiledata.css'
 
 export default function Profiledata() {
     const [fullName, setFullName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [sphone, setsPhone] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
     const [image, setImage] = useState(null);
@@ -16,7 +16,7 @@ export default function Profiledata() {
 
      // Send OTP request to the backend for phone
   const sendPhoneOtp = () => {
-    axios.post('https://shop-back-end.vercel.app/api/sendPhoneOtp', { phone })
+    axios.post('https://shop-back-end.vercel.app/api/sendPhoneOtp', { phone : {sphone} })
       .then(response => {
         alert('OTP sent to phone!');
       }).catch(error => {
@@ -26,7 +26,7 @@ export default function Profiledata() {
 
   // Verify OTP for phone
   const verifyPhoneOtp = () => {
-    axios.post('https://shop-back-end.vercel.app/api/verifyPhoneOtp', { phone, otp: phoneOtp })
+    axios.post('https://shop-back-end.vercel.app/api/verifyPhoneOtp', { sphone, otp: phoneOtp })
       .then(response => {
         if (response.data.success) {
           setIsPhoneVerified(true);
@@ -93,7 +93,7 @@ export default function Profiledata() {
 
       <div className="form-group">
         <label>Phone Number:</label>
-        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+        <input type="text" value={sphone} onChange={(e) => setsPhone(e.target.value)} />
         <button onClick={sendPhoneOtp}>Send OTP</button>
         <input type="text" placeholder="Enter OTP" value={phoneOtp} onChange={(e) => setPhoneOtp(e.target.value)} />
         <button onClick={verifyPhoneOtp}>Verify OTP</button>
