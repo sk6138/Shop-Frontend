@@ -15,6 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import { motion } from 'framer-motion';
+import Profiledata from "./Profiledata";
 
 const LoginButton = () => {
 
@@ -75,6 +76,8 @@ const LoginButton = () => {
   <div className="login-page">
   <div className="login-content">
     {isAuthenticated ? (
+     <>
+          <Profiledata/>
 
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -94,6 +97,7 @@ const LoginButton = () => {
               Log Out
             </motion.button>
           </motion.div>
+          </>
     ) : (
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
