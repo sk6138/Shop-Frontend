@@ -108,7 +108,7 @@ const LoginButton = (props) => {
           whileTap={{ scale: 0.9 }}
           className="login-button"
           type="button"
-          onClick={handleLogin}
+          onClick={() => loginWithRedirect()}
         >
           Log In
         </motion.button>
