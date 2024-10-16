@@ -57,3 +57,12 @@
 // };
 
 // export default PayUForm;
+import React from 'react'
+
+export default function PayUForm() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
