@@ -16,9 +16,9 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import { motion } from 'framer-motion';
 
-const LoginButton = () => {
+const LoginButton = (props) => {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(props.title);
 
   const handleLogin = () => setIsLoggedIn(true);
   const handleLogout = () => setIsLoggedIn(false);
