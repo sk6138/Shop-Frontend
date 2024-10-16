@@ -19,7 +19,7 @@ import { motion } from 'framer-motion';
 const LoginButton = (props) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(props.title);
-
+  const { logout } = useAuth0();
   const handleLogin = () => setIsLoggedIn(true);
   const handleLogout = () => setIsLoggedIn(false);
   const navigate = useNavigate();
@@ -89,7 +89,7 @@ const LoginButton = (props) => {
           whileTap={{ scale: 0.9 }}
           className="login-button"
           type="button"
-          onClick={handleLogout}
+          onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
         >
           Log Out
         </motion.button>
