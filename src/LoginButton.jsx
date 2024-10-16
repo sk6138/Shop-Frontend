@@ -76,7 +76,7 @@ const LoginButton = () => {
   <div className="login-content">
     {isAuthenticated ? (
 
-          <><img src={user.picture} alt={user.name} /><h2>{user.name}</h2><p>{user.email}</p><motion.div
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -93,7 +93,7 @@ const LoginButton = () => {
             >
               Log Out
             </motion.button>
-          </motion.div></>
+          </motion.div>
     ) : (
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
