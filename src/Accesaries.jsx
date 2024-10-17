@@ -16,7 +16,7 @@ export default function Accesaries() {
   
     useEffect(() => {
       // Call the API when the component mounts https://www.dbooks.org/api/recent
-      axios.get('https://shop-backend-production-d74a.up.railway.app/api/accesaries/all')
+      axios.get('http://localhost:8080/api/accesaries/all')
         .then(response => {
           setData(response.data);
           setLoading(false);

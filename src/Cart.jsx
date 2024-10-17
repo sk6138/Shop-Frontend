@@ -34,7 +34,7 @@ export default function Cart() {
   }
    
   console.log(userid);
-  const url =`https://shop-backend-production-d74a.up.railway.app/api/cart/${userid}`;
+  const url =`http://localhost:8080/api/cart/${userid}`;
 
   useEffect(() => {
     // Call the API when the component mounts https://www.dbooks.org/api/recent
@@ -100,7 +100,7 @@ export default function Cart() {
       setbtnLoading(true);  // Show loading state
       try {
           // Make DELETE request to API to remove item from cart
-          const response = await axios.delete(`https://shop-backend-production-d74a.up.railway.app/api/cart/remove/${CartId}`);
+          const response = await axios.delete(`http://localhost:8080/api/cart/remove/${CartId}`);
           
               // Call onRemove (optional) to update the cart in the parent component
               Swal.fire({

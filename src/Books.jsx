@@ -15,7 +15,7 @@ export default function Books() {
   
     useEffect(() => {
       // Call the API when the component mounts https://www.dbooks.org/api/recent
-      axios.get('https://shop-backend-production-d74a.up.railway.app/api/books/all')
+      axios.get('http://localhost:8080/api/books/all')
         .then(response => {
           setData(response.data);
           setLoading(false);

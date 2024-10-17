@@ -15,7 +15,7 @@ export default function CardContainer(props) {
     useEffect(() => {
       // Call the API when the component mounts
      // production use
-      axios.get('https://shop-backend-production-d74a.up.railway.app/api/notebooks/all')
+      axios.get('http://localhost:8080/api/notebooks/all')
      
         .then(response => {
           setData(response.data);

@@ -33,7 +33,7 @@ function Navbar() {
       }
       try {
         console.log(searchTerm);
-        const response = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/search', {
+        const response = await axios.get('http://localhost:8080/api/search', {
           params: { term: searchTerm },
         });
         

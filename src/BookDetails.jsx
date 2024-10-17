@@ -28,7 +28,7 @@ export default function BookDetails(props) {
   const  {id}  = useParams();
   const {path} = (props.title);
   // console.log(path);
-  const apiUrl = `https://shop-backend-production-d74a.up.railway.app/api/${props.title}/${id}`;
+  const apiUrl = `http://localhost:8080/api/${props.title}/${id}`;
   
   const [product, setproduct] = useState();
   const [loading, setLoading] = useState(true);
@@ -88,7 +88,7 @@ export default function BookDetails(props) {
         console.log(product.price);
         console.log(quantity);
 
-         await axios.post('https://shop-backend-production-d74a.up.railway.app/api/cart/add', {
+         await axios.post('http://localhost:8080/api/cart/add', {
           userId: (user.email),
           image: product.image,
           productId: product.id,
@@ -125,7 +125,7 @@ export default function BookDetails(props) {
  
     const createPayment = async () => {
       const total = (product.price*quantity);
-      const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/payu/create-payment', {
+      const response = await axios.post('http://localhost:8080/api/payu/create-payment', {
         txnId: txnid,   // Unique transaction ID (generate this dynamically)
         amount: total,       // Amount in INR
         productInfo: product.name,
@@ -137,7 +137,7 @@ export default function BookDetails(props) {
       setPaymentData(response.data);
   
       // Get the PayU URL
-      const payuResponse = await axios.get('https://shop-backend-production-d74a.up.railway.app/api/payu/payu-url');
+      const payuResponse = await axios.get('http://localhost:8080/api/payu/payu-url');
       setPayuUrl(payuResponse.data);
 
 

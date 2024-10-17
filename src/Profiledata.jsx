@@ -4,7 +4,7 @@ import './Profiledata.css'
 
 export default function Profiledata() {
     const [fullName, setFullName] = useState('');
-    const [sphone, setsPhone] = useState('');
+    const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [address, setAddress] = useState('');
     const [image, setImage] = useState(null);
@@ -15,18 +15,45 @@ export default function Profiledata() {
     const [progress, setProgress] = useState(0);
 
      // Send OTP request to the backend for phone
-  const sendPhoneOtp = () => {
-    axios.post('https://shop-back-end.vercel.app/api/sendPhoneOtp', { phone : {sphone} })
-      .then(response => {
-        alert('OTP sent to phone!');
-      }).catch(error => {
-        alert('Error sending OTP.');
-      });
+  // const sendPhoneOtp = () => {
+  //   axios.post('localhost:8080/api/sendPhoneOtp', { 'phone' : (phone)  })
+  //     .then(response => {
+  //       alert('OTP sent to phone!');
+  //     }).catch(error => {
+  //       console.log(error);
+  //       alert('Error sending OTP.');
+  //     });
+  // };
+
+  const sendPhoneOtp = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/api/sendPhoneOtp', 
+        {
+          "phone": phone
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      console.log(response.data);  // Handle the response data here
+    } catch (error) {
+      console.error('Error sending OTP:', error);  // Handle the error here
+    }
   };
 
+
+  
+
   // Verify OTP for phone
-  const verifyPhoneOtp = () => {
-    axios.post('https://shop-back-end.vercel.app/api/verifyPhoneOtp', { sphone, otp: phoneOtp })
+  const verifyPhoneOtp = async () => {
+    const response = await axios.post('http://localhost:8080/api/verifyPhoneOtp', { "phone": phone, "otp": phoneOtp }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then(response => {
         if (response.data.success) {
           setIsPhoneVerified(true);
@@ -40,18 +67,32 @@ export default function Profiledata() {
   };
 
   // Send OTP request to the backend for email
-  const sendEmailOtp = () => {
-    axios.post('https://shop-back-end.vercel.app/api/sendEmailOtp', { email })
-      .then(response => {
-        alert('OTP sent to email!');
-      }).catch(error => {
-        alert('Error sending OTP.');
-      });
+  const sendEmailOtp = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/api/sendEmailOtp', 
+        {
+          "Email": email
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      console.log(response.data);  // Handle the response data here
+    } catch (error) {
+      console.error('Error sending OTP:', error);  // Handle the error here
+    }
   };
 
   // Verify OTP for email
-  const verifyEmailOtp = () => {
-    axios.post('https://shop-back-end.vercel.app/api/verifyEmailOtp', { email, otp: emailOtp })
+  const verifyEmailOtp =  async () => {
+    const response = await axios.post('http://localhost:8080/api/verifyEmailOtp', { "Email": email, "otp": emailOtp }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then(response => {
         if (response.data.success) {
           setIsEmailVerified(true);
@@ -93,7 +134,7 @@ export default function Profiledata() {
 
       <div className="form-group">
         <label>Phone Number:</label>
-        <input type="text" value={sphone} onChange={(e) => setsPhone(e.target.value)} />
+        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
         <button onClick={sendPhoneOtp}>Send OTP</button>
         <input type="text" placeholder="Enter OTP" value={phoneOtp} onChange={(e) => setPhoneOtp(e.target.value)} />
         <button onClick={verifyPhoneOtp}>Verify OTP</button>

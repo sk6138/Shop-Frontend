@@ -83,7 +83,7 @@ const Contact = () => {
 
     try {
       // Send form data to the backend API
-      const response = await axios.post('https://shop-backend-production-d74a.up.railway.app/api/contact/post', formData);
+      const response = await axios.post('http://localhost:8080/api/contact/post', formData);
       
       // Clear form and show success message
       setFormData({
